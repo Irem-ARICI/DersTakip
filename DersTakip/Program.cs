@@ -1,3 +1,6 @@
+using DersTakip.Utility;
+using Microsoft.EntityFrameworkCore;
+
 namespace DersTakip
 {
     public class Program
@@ -8,6 +11,9 @@ namespace DersTakip
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<UygulamaDbContext>(options =>
+                   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
