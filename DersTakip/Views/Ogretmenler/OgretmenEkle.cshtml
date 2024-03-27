@@ -1,0 +1,29 @@
+﻿@model Ogretmenler
+
+<form method="post">
+    <div class="border p-3 mt-5">
+        <h2 class="text-primary">Öğretmen Branşı ekleme </h2>
+        </hr>
+    
+
+    <div class="mb-3">
+        <label asp-for="Ad" class="p-0">Öğretmen Branşı:</label>
+        <input asp-for="Ad" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-outline-secondary" style="width:250px">Branş Ekle</button>
+
+    <a asp-controller="Ogretmenler" asp-action="Index" class="btn btn-outline-secondary" type="button" style="width:250px">
+       Öğretmenlere Geri Dön
+    </a>
+
+    </div>
+</form>
+
+
+
+
+@* 
+<h3>Yeni Öğretmen atandı</h3> *@
+
+

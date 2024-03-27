@@ -15,7 +15,15 @@ namespace DersTakip.Controllers
         }
         public IActionResult Index()
         {
+            String ornek = "merhaba";
+            ViewBag.ornek = ornek;
+
             List<Ogretmenler> objOgretmenlerList = _uygulamaDbContext.OgretmenlerTbl.ToList();
+            return View(objOgretmenlerList);
+        }
+
+        public IActionResult OgretmenEkle()
+        {
             return View();
         }
     }

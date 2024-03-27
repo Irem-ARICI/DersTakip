@@ -6,3 +6,50 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<style>
+    /* Arka plan resmi için stil */
+    body {
+        background-image: url('clouds.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* İletişim bilgileri stilini güncelle */
+    .iletisim-bilgileri {
+        background-color: black; /* İletişim bilgileri alanının arka plan rengi */
+        color: white; /* İletişim bilgileri alanındaki metinlerin rengi */
+        padding: 20px; /* İletişim bilgileri alanının iç boşluğu */
+        margin-top: 20px; /* Üstten boşluk */
+    }
+
+        /* İletişim bilgileri içindeki başlık ve paragrafların stilleri */
+        .iletisim-bilgileri h4 {
+            color: #007bff; /* Başlık rengi */
+        }
+
+        .iletisim-bilgileri p {
+            margin-bottom: 10px; /* Paragraf arası boşluk */
+        }
+
+        /* Sağ ve sol kolonların arka plan rengi */
+        .iletisim-bilgileri .col-md-6 {
+            background-color: black;
+            padding: 20px; /* Sağ ve sol kolonların iç boşluğu */
+        }
+</style>
+
+<!-- İletişim Bilgileri -->
+<div class="row pt-3 iletisim-bilgileri">
+    <div class="col-md-6">
+        <h4>İletişim Bilgileri</h4>
+        <p>Telefon: 123-456-7890</p>
+        <p>Hafta içi : 7.00 - 22.00</p>
+        <p>Hafta sonu : 7.00 - 23.00</p>
+        <p>Adres: Örnek Mahallesi, Örnek Sokak No: 123, Örnek İl/İlçe</p>
+    </div>
+    <div class="col-md-6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d482319.1448428725!2d28.84812812636862!3d41.00823722127213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40bacc3d6347b805%3A0x1e7fb7b09fd05eb2!2sIstanbul!5e0!3m2!1sen!2str!4v1646202174182!5m2!1sen!2str" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</div>
