@@ -3,45 +3,45 @@
 <form method="post">
     <input asp-for="TC" hidden />
     <div class="border p-3 mt-5">
-        <h2 class="text-primary">Öğrenci Ekleme </h2>
+        <h2 class="text-primary">Öğrenci Güncelleme </h2>
         </hr>
 
 
         <div class="mb-3">
             <label asp-for="TC" class="p-0">TC Ekle:</label>
-            <input asp-for="TC" class="form-control" />
+            <input asp-for="TC" disabled class="form-control" />
             <span asp-validation-for="TC" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label asp-for="AdSoyad" class="p-0">Ad-Soyad Ekle:</label>
-            <input asp-for="AdSoyad" class="form-control" />
+            <input asp-for="AdSoyad" disabled class="form-control" />
             <span asp-validation-for="AdSoyad" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label asp-for="TelNo" class="p-0">Telefon Numarası Ekle:</label>
-            <input asp-for="TelNo" class="form-control" />
+            <input asp-for="TelNo" disabled class="form-control" />
             <span asp-validation-for="TelNo" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label asp-for="Mail" class="p-0">Mail Ekle:</label>
-            <input asp-for="Mail" class="form-control" />
+            <input asp-for="Mail" disabled class="form-control" />
             <span asp-validation-for="Mail" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label asp-for="Sinifi" class="p-0">Sınıf Ekle:</label>
-            <input asp-for="Sinifi" class="form-control" />
+            <input asp-for="Sinifi" disabled class="form-control" />
             <span asp-validation-for="Sinifi" class="text-danger"></span>
         </div>
 
 
-        <button type="submit" class="btn btn-outline-secondary" style="width:250px">Öğrenciyi Ekle</button>
+        <button type="submit" class="btn btn-outline-secondary" style="width:250px">Öğrenciyi Sil</button>
 
         <a asp-controller="Ogrenciler" asp-action="Index" class="btn btn-outline-secondary" type="button" style="width:250px">
-            Öğrencilere Geri Dön
+            Öğrenci Listesine Geri Dön
         </a>
 
     </div>

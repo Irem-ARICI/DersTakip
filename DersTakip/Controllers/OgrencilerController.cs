@@ -33,5 +33,63 @@ namespace DersTakip.Controllers
             }
             return View();
         }
+
+
+
+        public IActionResult Guncelle(int? Sinifi)  // TC yi yemedi ~OgretmenlerController->id 
+        {
+            if(Sinifi == null || Sinifi == 0)
+            {
+                return NotFound();
+            }
+            Ogrenciler? ogrencilerVt = _uygulamaDbContext.OgrencilerTbl.Find(Sinifi);
+            if (ogrencilerVt == null)
+            {
+                return NotFound();
+            }
+            return View(ogrencilerVt);
+        }
+
+        [HttpPost]
+        public IActionResult Guncelle(Ogrenciler ogrenciler)
+        {
+            if (ModelState.IsValid)
+            {
+                _uygulamaDbContext.OgrencilerTbl.Update(ogrenciler);
+                _uygulamaDbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+
+
+        public IActionResult Sil(int? TC)  // TC yi yemedi ~OgretmenlerController->id 
+        {
+            if (TC == null || TC == 0)
+            {
+                return NotFound();
+            }
+            Ogrenciler? ogrencilerVt = _uygulamaDbContext.OgrencilerTbl.Find(TC);
+            if (ogrencilerVt == null)
+            {
+                return NotFound();
+            }
+            return View(ogrencilerVt);
+        }
+
+        [HttpPost, ActionName("Sil")]
+        public IActionResult SilPOST(int? id)
+        {
+            Ogrenciler? ogrenciler = _uygulamaDbContext.OgrencilerTbl.Find(id);
+            if (ogrenciler == null)
+            {
+                return NotFound();
+            }
+            _uygulamaDbContext.OgrencilerTbl.Remove(ogrenciler);
+            _uygulamaDbContext.SaveChanges();
+            return RedirectToAction("Index", "Ogrenciler");
+        }
+
     }
 }

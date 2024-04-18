@@ -1,6 +1,7 @@
 ﻿@model List<Ogrenciler>
 
 <div class="container">
+    
     <div class="row pt-3 pb-4">
         <div><h3 style="color: #007bff;">Öğrenciler Sayfası</h3></div>
     </div>
@@ -13,18 +14,22 @@
                 <th style="color: #007bff;">Telefon Numarası</th>
                 <th style="color: #007bff;">Mail</th>
                 <th style="color: #007bff;">Sınıf</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
 
         <tbody>
-            @foreach (var Ogrenciler in Model)
+            @foreach (var ogrenciler in Model)
             {
                 <tr>
-                     <td>@Ogrenciler.TC</td>
-                    <td>@Ogrenciler.AdSoyad</td>
-                    <td>@Ogrenciler.TelNo</td>
-                    <td>@Ogrenciler.Mail</td>
-                    <td>@Ogrenciler.Sinifi</td>
+                    <td>@ogrenciler.TC</td>
+                    <td>@ogrenciler.AdSoyad</td>
+                    <td>@ogrenciler.TelNo</td>
+                    <td>@ogrenciler.Mail</td>
+                    <td>@ogrenciler.Sinifi</td>
+                    <td><a asp-controller="Ogrenciler" asp-action="Guncelle" asp-route-id="@ogrenciler.TC" class=" btn btn-success btn-sm" type="button">Güncelle</a></td>
+                    <td><a asp-controller="Ogrenciler" asp-action="Sil" asp-route-id="@ogrenciler.TC" class=" btn btn-danger btn-sm" type="button">Sil</a></td>
                 </tr>
             }
         </tbody>

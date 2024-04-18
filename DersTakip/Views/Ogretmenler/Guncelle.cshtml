@@ -1,0 +1,44 @@
+﻿@model Ogretmenler
+
+<form method="post">
+    <div class="border p-3 mt-5">
+        <h2 class="text-primary">Öğretmen Güncelle </h2>
+        </hr>
+
+
+        <div class="mb-3">
+            <label asp-for="Ad" class="p-0">Yeni Öğretmen Ad Ekle:</label>
+            <input asp-for="Ad" class="form-control" />
+            <span asp-validation-for="Ad" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Soyad" class="p-0">Soyad Ekle:</label>
+            <input asp-for="Soyad" class="form-control" />
+            <span asp-validation-for="Soyad" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Brans" class="p-0">Brans Ekle:</label>
+            <input asp-for="Brans" class="form-control" />
+            <span asp-validation-for="Brans" class="text-danger"></span>
+        </div>
+    </div>
+
+    
+    <button type="submit" class="btn btn-outline-secondary" style="width:250px">Öğretmen Bilgilerini Güncelle</button>
+
+    <a asp-controller="Ogretmenler" asp-action="Index" class="btn btn-outline-secondary" type="button" style="width:250px">
+        Öğretmenlere Geri Dön
+    </a>
+
+    </div>
+</form>
+
+
+
+
+@*
+<h3>Yeni Öğretmen atandı</h3> *@
+
+

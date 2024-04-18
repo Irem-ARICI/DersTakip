@@ -13,16 +13,20 @@
                @*  <th style="color: #007bff;">Id</th> *@
                 <th style="color: #007bff;">Öğretmen  Ad & Soyad</th>
                 <th style="color: #007bff;">Öğretmen Branş</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
 
         <tbody>
-            @foreach (var Ogretmenler in Model)
+            @foreach (var ogretmenler in Model)
             {
                 <tr>
                    @*  <td>@Ogretmenler.Id</td> *@
-                    <td>@Ogretmenler.Ad @Ogretmenler.Soyad</td>
-                    <td>@Ogretmenler.Brans</td>
+                    <td>@ogretmenler.Ad @ogretmenler.Soyad</td>
+                    <td>@ogretmenler.Brans</td>
+                    <td><a asp-controller="Ogretmenler" asp-action="Guncelle" asp-route-id="@ogretmenler.Id" class=" btn btn-success btn-sm" type="button">Güncelle</a></td>
+                    <td><a asp-controller="Ogretmenler" asp-action="Sil" asp-route-id="@ogretmenler.Id" class=" btn btn-danger btn-sm" type="button">Sil</a></td>
                 </tr>
             }
         </tbody>
