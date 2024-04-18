@@ -2,16 +2,31 @@
 
 <form method="post">
     <div class="border p-3 mt-5">
-        <h2 class="text-primary">Öğretmen Branşı ekleme </h2>
+        <h2 class="text-primary">Öğretmen Ekleme </h2>
         </hr>
     
 
     <div class="mb-3">
-        <label asp-for="Ad" class="p-0">Öğretmen Branşı:</label>
+        <label asp-for="Ad" class="p-0">Yeni Öğretmen Ad Ekle:</label>
         <input asp-for="Ad" class="form-control" />
+        <span asp-validation-for="Ad" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-outline-secondary" style="width:250px">Branş Ekle</button>
+    <div class="mb-3">
+        <label asp-for="Soyad" class="p-0">Soyad Ekle:</label>
+        <input asp-for="Soyad" class="form-control" />
+        <span asp-validation-for="Soyad" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Brans" class="p-0">Brans Ekle:</label>
+        <input asp-for="Brans" class="form-control" />
+        <span asp-validation-for="Brans" class="text-danger"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-outline-secondary" style="width:250px">Öğretmeni Ekle</button>
 
     <a asp-controller="Ogretmenler" asp-action="Index" class="btn btn-outline-secondary" type="button" style="width:250px">
        Öğretmenlere Geri Dön

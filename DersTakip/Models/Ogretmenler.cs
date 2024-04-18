@@ -7,7 +7,8 @@ namespace DersTakip.Models
     {
         [Key]   // primary key
         public int Id { get; set; }
-        [Required]  // not null
+        [Required]// not null
+        [MaxLength(25)]
         [DisplayName("Öğretmenin Adı:")]
         public string Ad { get; set; }
         [Required]

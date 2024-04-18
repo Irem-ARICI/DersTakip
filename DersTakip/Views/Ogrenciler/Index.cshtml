@@ -1,2 +1,42 @@
-﻿
-<h3>Öğrencileri görebileceksiniz</h3>
+﻿@model List<Ogrenciler>
+
+<div class="container">
+    <div class="row pt-3 pb-4">
+        <div><h3 style="color: #007bff;">Öğrenciler Sayfası</h3></div>
+    </div>
+
+    <table class="table table-bordered" style="background-color: rgba(255, 255, 255, 0.8);">
+        <thead>
+            <tr>
+                <th style="color: #007bff;">TC</th>
+                <th style="color: #007bff;">Öğretmen  Ad & Soyad</th>
+                <th style="color: #007bff;">Telefon Numarası</th>
+                <th style="color: #007bff;">Mail</th>
+                <th style="color: #007bff;">Sınıf</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var Ogrenciler in Model)
+            {
+                <tr>
+                     <td>@Ogrenciler.TC</td>
+                    <td>@Ogrenciler.AdSoyad</td>
+                    <td>@Ogrenciler.TelNo</td>
+                    <td>@Ogrenciler.Mail</td>
+                    <td>@Ogrenciler.Sinifi</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="row pt-3 pb-2">
+        <div>
+            <a asp-controller="Ogrenciler" asp-action="OgrenciEkle" class="btn btn-outline-primary" type="button">
+                Yeni Ogrenci Ekle
+            </a>
+        </div>
+    </div>
+
+
+</div>

@@ -13,6 +13,24 @@ namespace DersTakip.Controllers
         }
         public IActionResult Index()
         {
+            List<Ogrenciler> objOgrencilerList = _uygulamaDbContext.OgrencilerTbl.ToList();
+            return View(objOgrencilerList);
+        }
+
+        public IActionResult OgrenciEKle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult OgrenciEKle(Ogrenciler ogrenciler)
+        {
+            if(ModelState.IsValid)
+            {
+                _uygulamaDbContext.OgrencilerTbl.Add(ogrenciler);
+                _uygulamaDbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return View();
         }
     }

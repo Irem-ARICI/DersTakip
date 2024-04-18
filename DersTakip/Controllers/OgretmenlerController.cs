@@ -26,5 +26,17 @@ namespace DersTakip.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult OgretmenEkle(Ogretmenler ogretmenler)
+        {
+            if (ModelState.IsValid)
+            {
+                _uygulamaDbContext.OgretmenlerTbl.Add(ogretmenler);
+                _uygulamaDbContext.SaveChanges();   // YApmazsan veritabanına eklenmez. => SaveChanges();
+                return RedirectToAction("Index");    // "Ogretmenler" controllerını çağırıyoruz farklı bi cont. çağırcaksak kesin yazmak zorunda
+            }
+            return View();
+        }
     }
 }

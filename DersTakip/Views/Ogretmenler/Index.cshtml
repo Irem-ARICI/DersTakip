@@ -10,8 +10,9 @@
     <table class="table table-bordered" style="background-color: rgba(255, 255, 255, 0.8);">
         <thead>
             <tr>
-                <th style="color: #007bff;">Id</th>
-                <th style="color: #007bff;">Öğretmen Listesi</th>
+               @*  <th style="color: #007bff;">Id</th> *@
+                <th style="color: #007bff;">Öğretmen  Ad & Soyad</th>
+                <th style="color: #007bff;">Öğretmen Branş</th>
             </tr>
         </thead>
 
@@ -19,8 +20,9 @@
             @foreach (var Ogretmenler in Model)
             {
                 <tr>
-                    <td>@Ogretmenler.Id</td>
+                   @*  <td>@Ogretmenler.Id</td> *@
                     <td>@Ogretmenler.Ad @Ogretmenler.Soyad</td>
+                    <td>@Ogretmenler.Brans</td>
                 </tr>
             }
         </tbody>
