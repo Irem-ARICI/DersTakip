@@ -16,6 +16,6 @@ namespace DersTakip.Models
         public string Mail { get; set; }
         [Required]
         public string Sinifi {  get; set; }
-
+        public int? Id { get; internal set; }
     }
 }

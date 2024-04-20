@@ -1,7 +1,6 @@
 ﻿using DersTakip.Models;
 using DersTakip.Utility;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace DersTakip.Controllers
 {
@@ -9,17 +8,17 @@ namespace DersTakip.Controllers
     {
         // Dependency injection
 
-        private readonly UygulamaDbContext _uygulamaDbContext;
-        public OgretmenlerController(UygulamaDbContext context)
+        private readonly IOgretmenlerRepository _ogretmenlerRepository;
+        public OgretmenlerController(IOgretmenlerRepository context)
         {
-            _uygulamaDbContext = context;
+            _ogretmenlerRepository = context;
         }
         public IActionResult Index()
         {
             String ornek = "merhaba";
             ViewBag.ornek = ornek;
 
-            List<Ogretmenler> objOgretmenlerList = _uygulamaDbContext.OgretmenlerTbl.ToList();
+            List<Ogretmenler> objOgretmenlerList = _ogretmenlerRepository.GetAll().ToList();
             return View(objOgretmenlerList);
         }
 
@@ -33,8 +32,9 @@ namespace DersTakip.Controllers
         {
             if (ModelState.IsValid)
             {
-                _uygulamaDbContext.OgretmenlerTbl.Add(ogretmenler);
-                _uygulamaDbContext.SaveChanges();   // YApmazsan veritabanına eklenmez. => SaveChanges();
+                _ogretmenlerRepository.Ekle(ogretmenler);
+                _ogretmenlerRepository.Kaydet();   // YApmazsan veritabanına eklenmez. => SaveChanges();
+                TempData["basarili"] = "Yeni öğretmen kaydedildi."; // TempData Controller ve View arasında geçişi göntülememizi sağlıyor
                 return RedirectToAction("Index");    // "Ogretmenler" controllerını çağırıyoruz farklı bi cont. çağırcaksak kesin yazmak zorunda
             }
             return View();
@@ -46,8 +46,8 @@ namespace DersTakip.Controllers
             {
                 return NotFound();
             }
-            Ogretmenler? ogretmenlerVt = _uygulamaDbContext.OgretmenlerTbl.Find(id);
-            if(ogretmenlerVt == null)
+            Ogretmenler? ogretmenlerVt = _ogretmenlerRepository.Get(u=>u.Id==id);       // Expression<Func<T, bool>> filtre
+            if (ogretmenlerVt == null)
             {
                 return NotFound();
             }
@@ -59,8 +59,9 @@ namespace DersTakip.Controllers
         {
             if (ModelState.IsValid)
             {
-                _uygulamaDbContext.OgretmenlerTbl.Update(ogretmenler);
-                _uygulamaDbContext.SaveChanges();   // YApmazsan veritabanına eklenmez. => SaveChanges();
+                _ogretmenlerRepository.Guncelle(ogretmenler);
+                _ogretmenlerRepository.Kaydet();   // YApmazsan veritabanına eklenmez. => SaveChanges(); ===> repository ekledik sonraağa
+                TempData["basarili"] = "Öğretmen bilgileri güncellendi.";
                 return RedirectToAction("Index");    // "Ogretmenler" controllerını çağırıyoruz farklı bi cont. çağırcaksak kesin yazmak zorunda
             }
             return View();
@@ -73,7 +74,7 @@ namespace DersTakip.Controllers
             {
                 return NotFound();
             }
-            Ogretmenler? ogretmenlerVt = _uygulamaDbContext.OgretmenlerTbl.Find(id);
+            Ogretmenler? ogretmenlerVt = _ogretmenlerRepository.Get(u => u.Id == id);
             if (ogretmenlerVt == null)
             {
                 return NotFound();
@@ -84,13 +85,14 @@ namespace DersTakip.Controllers
         [HttpPost, ActionName("Sil")]
         public IActionResult SilPOST(int? id)
         {
-            Ogretmenler? ogretmenler = _uygulamaDbContext.OgretmenlerTbl.Find(id);
+            Ogretmenler? ogretmenler = _ogretmenlerRepository.Get(u => u.Id == id);
             if(ogretmenler == null)
             {
                 return NotFound();
             }
-            _uygulamaDbContext.OgretmenlerTbl.Remove(ogretmenler);
-            _uygulamaDbContext.SaveChanges();
+            _ogretmenlerRepository.Sil(ogretmenler);
+            _ogretmenlerRepository.Kaydet();
+            TempData["basarili"] = "Öğretmen listeden silinddi.";
             return RedirectToAction("Index", "Ogretmenler");
         }
 

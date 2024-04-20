@@ -1,3 +1,4 @@
+using DersTakip.Models;
 using DersTakip.Utility;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,10 @@ namespace DersTakip
 
             builder.Services.AddDbContext<UygulamaDbContext>(options =>
                    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            // _ogretmenlerRepository nesnesini olu?turmam?z? sa?l?yor => dependency Injection
+            builder.Services.AddScoped<IOgretmenlerRepository, OgretmenlerRepository>();
+            builder.Services.AddScoped<IOgrencilerRepository, OgrencilerRepository>();
 
             var app = builder.Build();
 

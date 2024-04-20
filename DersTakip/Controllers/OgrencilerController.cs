@@ -6,14 +6,14 @@ namespace DersTakip.Controllers
 {
     public class OgrencilerController : Controller
     {
-        public readonly UygulamaDbContext _uygulamaDbContext;
-        public OgrencilerController(UygulamaDbContext context)
+        private readonly IOgrencilerRepository _ogrencilerRepository;
+        public OgrencilerController(IOgrencilerRepository context)
         {
-            _uygulamaDbContext = context;
+            _ogrencilerRepository = context;
         }
         public IActionResult Index()
         {
-            List<Ogrenciler> objOgrencilerList = _uygulamaDbContext.OgrencilerTbl.ToList();
+            List<Ogrenciler> objOgrencilerList = _ogrencilerRepository.GetAll().ToList();
             return View(objOgrencilerList);
         }
 
@@ -27,8 +27,9 @@ namespace DersTakip.Controllers
         {
             if(ModelState.IsValid)
             {
-                _uygulamaDbContext.OgrencilerTbl.Add(ogrenciler);
-                _uygulamaDbContext.SaveChanges();
+                _ogrencilerRepository.Ekle(ogrenciler);
+                _ogrencilerRepository.Kaydet();
+                TempData["basarili"] = "Yeni öğrenci kaydedildi.";
                 return RedirectToAction("Index");
             }
             return View();
@@ -42,7 +43,7 @@ namespace DersTakip.Controllers
             {
                 return NotFound();
             }
-            Ogrenciler? ogrencilerVt = _uygulamaDbContext.OgrencilerTbl.Find(Sinifi);
+            Ogrenciler? ogrencilerVt = _ogrencilerRepository.Get(u => u.Sinifi = Sinifi);       // Expression<Func<T, bool>> filtre
             if (ogrencilerVt == null)
             {
                 return NotFound();
@@ -55,8 +56,9 @@ namespace DersTakip.Controllers
         {
             if (ModelState.IsValid)
             {
-                _uygulamaDbContext.OgrencilerTbl.Update(ogrenciler);
-                _uygulamaDbContext.SaveChanges();
+                _ogrencilerRepository.Ekle(ogrenciler);
+                _ogrencilerRepository.Kaydet();
+                TempData["basarili"] = "Öğrenci bilgileri güncellendi.";
                 return RedirectToAction("Index");
             }
             return View();
@@ -70,7 +72,7 @@ namespace DersTakip.Controllers
             {
                 return NotFound();
             }
-            Ogrenciler? ogrencilerVt = _uygulamaDbContext.OgrencilerTbl.Find(TC);
+            Ogrenciler? ogrencilerVt = _ogrencilerRepository.Get(u=>u.TC = TC);
             if (ogrencilerVt == null)
             {
                 return NotFound();
@@ -81,13 +83,14 @@ namespace DersTakip.Controllers
         [HttpPost, ActionName("Sil")]
         public IActionResult SilPOST(int? id)
         {
-            Ogrenciler? ogrenciler = _uygulamaDbContext.OgrencilerTbl.Find(id);
+            Ogrenciler? ogrenciler = _ogrencilerRepository.Get(u => u.Id == id);
             if (ogrenciler == null)
             {
                 return NotFound();
             }
-            _uygulamaDbContext.OgrencilerTbl.Remove(ogrenciler);
-            _uygulamaDbContext.SaveChanges();
+            _ogrencilerRepository.Ekle(ogrenciler);
+            _ogrencilerRepository.Kaydet();
+            TempData["basarili"] = "Öğrenci listeden silinddi.";
             return RedirectToAction("Index", "Ogrenciler");
         }
 
