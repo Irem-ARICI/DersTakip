@@ -55,12 +55,16 @@ namespace DersTakip.Migrations
 
             modelBuilder.Entity("DersTakip.Models.Ogrenciler", b =>
                 {
-                    b.Property<string>("TC")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AdSoyad")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("Mail")
                         .IsRequired()
@@ -70,11 +74,14 @@ namespace DersTakip.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TC")
+                        .HasColumnType("int");
+
                     b.Property<string>("TelNo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TC");
+                    b.HasKey("Id");
 
                     b.ToTable("OgrencilerTbl");
                 });
@@ -89,7 +96,8 @@ namespace DersTakip.Migrations
 
                     b.Property<string>("Ad")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("Brans")
                         .IsRequired()

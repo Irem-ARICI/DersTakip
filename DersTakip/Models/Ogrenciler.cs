@@ -4,9 +4,9 @@ namespace DersTakip.Models
 {
     public class Ogrenciler
     {
-        [Key]
-        [MaxLength(11)]
-        public string TC { get; set; }
+        public int Id { get; set; }
+        
+        public int TC { get; set; }
         [Required]
         [MaxLength(25)]
         public string AdSoyad { get; set; }
@@ -16,6 +16,6 @@ namespace DersTakip.Models
         public string Mail { get; set; }
         [Required]
         public string Sinifi {  get; set; }
-        public int? Id { get; internal set; }
+        //public int? Id { get; internal set; }
     }
 }

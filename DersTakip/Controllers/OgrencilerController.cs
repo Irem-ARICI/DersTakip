@@ -37,13 +37,13 @@ namespace DersTakip.Controllers
 
 
 
-        public IActionResult Guncelle(int? Sinifi)  // TC yi yemedi ~OgretmenlerController->id 
+        public IActionResult Guncelle(int? tc)  // TC yi yemedi ~OgretmenlerController->id 
         {
-            if(Sinifi == null || Sinifi == 0)
+            if(tc == null || tc == 0)
             {
                 return NotFound();
             }
-            Ogrenciler? ogrencilerVt = _ogrencilerRepository.Get(u => u.Sinifi = Sinifi);       // Expression<Func<T, bool>> filtre
+            Ogrenciler? ogrencilerVt = _ogrencilerRepository.Get(u => u.TC == tc);       // Expression<Func<T, bool>> filtre
             if (ogrencilerVt == null)
             {
                 return NotFound();
@@ -72,7 +72,7 @@ namespace DersTakip.Controllers
             {
                 return NotFound();
             }
-            Ogrenciler? ogrencilerVt = _ogrencilerRepository.Get(u=>u.TC = TC);
+            Ogrenciler? ogrencilerVt = _ogrencilerRepository.Get(u=>u.TC == TC);
             if (ogrencilerVt == null)
             {
                 return NotFound();
@@ -81,9 +81,9 @@ namespace DersTakip.Controllers
         }
 
         [HttpPost, ActionName("Sil")]
-        public IActionResult SilPOST(int? id)
+        public IActionResult SilPOST(int? tc)
         {
-            Ogrenciler? ogrenciler = _ogrencilerRepository.Get(u => u.Id == id);
+            Ogrenciler? ogrenciler = _ogrencilerRepository.Get(u => u.TC == tc);
             if (ogrenciler == null)
             {
                 return NotFound();
