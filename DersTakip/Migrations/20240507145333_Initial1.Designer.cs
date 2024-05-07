@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DersTakip.Migrations
 {
     [DbContext(typeof(UygulamaDbContext))]
-    [Migration("20240507132904_Initial")]
-    partial class Initial
+    [Migration("20240507145333_Initial1")]
+    partial class Initial1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -77,8 +77,8 @@ namespace DersTakip.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TC")
-                        .HasColumnType("int");
+                    b.Property<long>("TC")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("TelNo")
                         .IsRequired()

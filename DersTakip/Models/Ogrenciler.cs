@@ -6,7 +6,7 @@ namespace DersTakip.Models
     {
         public int Id { get; set; }
         
-        public int TC { get; set; }
+        public long TC { get; set; }
         [Required]
         [MaxLength(25)]
         public string AdSoyad { get; set; }

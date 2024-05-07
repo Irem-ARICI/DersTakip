@@ -74,8 +74,8 @@ namespace DersTakip.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TC")
-                        .HasColumnType("int");
+                    b.Property<long>("TC")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("TelNo")
                         .IsRequired()
