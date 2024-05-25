@@ -17,5 +17,7 @@ namespace DersTakip.Models
         [Required]
         public string Sinifi {  get; set; }
         //public int? Id { get; internal set; }
+        [Required]
+        public string ResimUrl { get; set; }
     }
 }

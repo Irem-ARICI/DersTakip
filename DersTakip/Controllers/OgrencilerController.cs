@@ -17,13 +17,27 @@ namespace DersTakip.Controllers
             return View(objOgrencilerList);
         }
 
-        public IActionResult OgrenciEKle()
+        public IActionResult OgrenciEKleGuncelle(long? id)
         {
-            return View();
+
+            if( id == 0 || id == null)
+            {
+                return View();
+            }
+            else
+            {
+                Ogrenciler? ogrencilerVt = _ogrencilerRepository.Get(u => u.Id == id);       // Expression<Func<T, bool>> filtre
+                if (ogrencilerVt == null)
+                {
+                    return NotFound();
+                }
+                return View(ogrencilerVt);
+            }
+            
         }
 
         [HttpPost]
-        public IActionResult OgrenciEKle(Ogrenciler ogrenciler)
+        public IActionResult OgrenciEKleGuncelle(Ogrenciler ogrenciler, IFormFile? file)
         {
             if(ModelState.IsValid)
             {
@@ -35,15 +49,15 @@ namespace DersTakip.Controllers
             return View();
         }
 
+        /*
 
-
-        public IActionResult Guncelle(long? tc)  // TC yi yemedi ~OgretmenlerController->id 
+        public IActionResult Guncelle(long? id)  // TC yi yemedi ~OgretmenlerController->id 
         {
-            if(tc == null || tc == 0)
+            if(id == null || id == 0)
             {
                 return NotFound();
             }
-            Ogrenciler? ogrencilerVt = _ogrencilerRepository.Get(u => u.TC == tc);       // Expression<Func<T, bool>> filtre
+            Ogrenciler? ogrencilerVt = _ogrencilerRepository.Get(u => u.Id == id);       // Expression<Func<T, bool>> filtre
             if (ogrencilerVt == null)
             {
                 return NotFound();
@@ -51,12 +65,14 @@ namespace DersTakip.Controllers
             return View(ogrencilerVt);
         }
 
+        */
+
         [HttpPost]
         public IActionResult Guncelle(Ogrenciler ogrenciler)
         {
             if (ModelState.IsValid)
             {
-                _ogrencilerRepository.Ekle(ogrenciler);
+                _ogrencilerRepository.Guncelle(ogrenciler);
                 _ogrencilerRepository.Kaydet();
                 TempData["basarili"] = "Öğrenci bilgileri güncellendi.";
                 return RedirectToAction("Index");
@@ -88,7 +104,7 @@ namespace DersTakip.Controllers
             {
                 return NotFound();
             }
-            _ogrencilerRepository.Ekle(ogrenciler);
+            _ogrencilerRepository.Sil(ogrenciler);
             _ogrencilerRepository.Kaydet();
             TempData["basarili"] = "Öğrenci listeden silinddi.";
             return RedirectToAction("Index", "Ogrenciler");

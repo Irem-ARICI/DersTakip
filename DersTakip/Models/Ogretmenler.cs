@@ -16,5 +16,7 @@ namespace DersTakip.Models
         [Required]
         public string Brans {  get; set; }
 
+        public string ResimUrl { get; set; }
+
     }
 }

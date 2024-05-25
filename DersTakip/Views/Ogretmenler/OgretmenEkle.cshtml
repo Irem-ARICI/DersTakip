@@ -1,6 +1,6 @@
 ﻿@model Ogretmenler
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div class="border p-3 mt-5">
         <h2 class="text-primary">Öğretmen Ekleme </h2>
         </hr>
@@ -22,6 +22,11 @@
         <label asp-for="Brans" class="p-0">Brans Ekle:</label>
         <input asp-for="Brans" class="form-control" />
         <span asp-validation-for="Brans" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ResimUrl" class="p-0"></label>
+        <input type="file" name="file" class="form-control" />
     </div>
 
     </div>

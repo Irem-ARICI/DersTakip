@@ -1,9 +1,10 @@
 ﻿@model Ogrenciler
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
+    
     <div class="border p-3 mt-5">
-        <h2 class="text-primary">Öğrenci Güncelleme </h2>
-        </hr>
+        <h2 class="text-primary"> @(Model==null?"Öğrenci Ekle":"Öğrenci Güncelle")</h2>
+       
 
 
         <div class="mb-3">
@@ -36,9 +37,19 @@
             <span asp-validation-for="Sinifi" class="text-danger"></span>
         </div>
 
+        <div class="mb-3">
+            <label asp-for="ResimUrl" class="p-0"></label>
+            <input type="file" name="file" class="form-control" />
+        </div>
 
-        <button type="submit" class="btn btn-outline-secondary" style="width:250px">Öğrenci Bilgilerini Güncelle</button>
-
+        @if (Model != null)      // çalışıyordu ama değiştirdik => @if(Model.Id != 0)
+        {
+            <button type="submit" class="btn btn-outline-secondary" style="width:250px">Güncelle</button>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-outline-secondary" style="width:250px">Öğrenci Ekle</button>
+        }
         <a asp-controller="Ogrenciler" asp-action="Index" class="btn btn-outline-secondary" type="button" style="width:250px">
             Öğrencilere Geri Dön
         </a>

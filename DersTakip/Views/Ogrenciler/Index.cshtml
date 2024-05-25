@@ -14,7 +14,7 @@
     <table class="table table-bordered" style="background-color: rgba(255, 255, 255, 0.8);">
         <thead>
             <tr>
-                <th style="color: #007bff;">TC</th>
+                @* <th style="color: #007bff;">TC</th> *@
                 <th style="color: #007bff;">Öğretmen  Ad & Soyad</th>
                 <th style="color: #007bff;">Telefon Numarası</th>
                 <th style="color: #007bff;">Mail</th>
@@ -28,13 +28,13 @@
             @foreach (var ogrenciler in Model)
             {
                 <tr>
-                    <td>@ogrenciler.TC</td>
+                    @* <td>@ogrenciler.Id</td> *@
                     <td>@ogrenciler.AdSoyad</td>
                     <td>@ogrenciler.TelNo</td>
                     <td>@ogrenciler.Mail</td>
                     <td>@ogrenciler.Sinifi</td>
-                    <td><a asp-controller="Ogrenciler" asp-action="Guncelle" asp-route-id="@ogrenciler.TC" class=" btn btn-success btn-sm" type="button">Güncelle</a></td>
-                    <td><a asp-controller="Ogrenciler" asp-action="Sil" asp-route-id="@ogrenciler.TC" class=" btn btn-danger btn-sm" type="button">Sil</a></td>
+                    <td><a asp-controller="Ogrenciler" asp-action="OgrenciEKleGuncelle" asp-route-id="@ogrenciler.Id" class=" btn btn-success btn-sm" type="button">Güncelle</a></td>
+                    <td><a asp-controller="Ogrenciler" asp-action="Sil" asp-route-id="@ogrenciler.Id" class=" btn btn-danger btn-sm" type="button">Sil</a></td>
                 </tr>
             }
         </tbody>
@@ -42,7 +42,7 @@
 
     <div class="row pt-3 pb-2">
         <div>
-            <a asp-controller="Ogrenciler" asp-action="OgrenciEkle" class="btn btn-outline-primary" type="button">
+            <a asp-controller="Ogrenciler" asp-action="OgrenciEKleGuncelle" class="btn btn-outline-primary" type="button">
                 Yeni Ogrenci Ekle
             </a>
         </div>

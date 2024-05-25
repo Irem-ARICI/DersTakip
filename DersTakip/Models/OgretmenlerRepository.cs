@@ -19,5 +19,10 @@ namespace DersTakip.Models
         {
             _uygulamaDbContext.SaveChanges();
         }
+
+        public void IstekOlustur()
+        {
+            _uygulamaDbContext.SaveChanges();
+        }
     }
 }
