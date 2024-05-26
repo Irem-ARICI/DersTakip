@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DersTakip.Migrations
 {
     [DbContext(typeof(UygulamaDbContext))]
-    [Migration("20240516135837_resimUrl")]
-    partial class resimUrl
+    [Migration("20240526223244_mig1")]
+    partial class mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

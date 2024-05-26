@@ -1,6 +1,7 @@
 ﻿using DersTakip.Models;
 using DersTakip.Utility;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DersTakip.Controllers
 {
@@ -24,19 +25,28 @@ namespace DersTakip.Controllers
 
         public IActionResult OgretmenEkle()
         {
+            IEnumerable<SelectListItem> OgretmenlerList = _ogretmenlerRepository.GetAll()
+                .Select(k => new SelectListItem
+                {
+                    Text = k.Ad,
+                    Value = k.Id.ToString(),
+                });
+            ViewBag.OgretmenlerList = OgretmenlerList;
+
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult OgretmenEkle(Ogretmenler ogretmenler)
+        public IActionResult OgretmenEkle(Ogretmenler ogretmenler, IFormFile? file)     // , IFormFile? file
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+         //   {
                 _ogretmenlerRepository.Ekle(ogretmenler);
                 _ogretmenlerRepository.Kaydet();   // YApmazsan veritabanına eklenmez. => SaveChanges();
                 TempData["basarili"] = "Yeni öğretmen kaydedildi."; // TempData Controller ve View arasında geçişi göntülememizi sağlıyor
                 return RedirectToAction("Index");    // "Ogretmenler" controllerını çağırıyoruz farklı bi cont. çağırcaksak kesin yazmak zorunda
-            }
+         //   }
             return View();
         }
 
@@ -55,7 +65,7 @@ namespace DersTakip.Controllers
         }
 
         [HttpPost]
-        public IActionResult Guncelle(Ogretmenler ogretmenler)
+        public IActionResult Guncelle(Ogretmenler ogretmenler, IFormFile? file)
         {
             if (ModelState.IsValid)
             {

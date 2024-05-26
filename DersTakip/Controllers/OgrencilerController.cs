@@ -1,6 +1,7 @@
 ﻿using DersTakip.Models;
 using DersTakip.Utility;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DersTakip.Controllers
 {
@@ -19,8 +20,15 @@ namespace DersTakip.Controllers
 
         public IActionResult OgrenciEKleGuncelle(long? id)
         {
+            IEnumerable<SelectListItem> OgrencilerList = _ogrencilerRepository.GetAll()
+                .Select(k => new SelectListItem
+                 {
+                     Text = k.AdSoyad,
+                     Value = k.Id.ToString(),
+                 });
+            ViewBag.OgrenciList = OgrencilerList;
 
-            if( id == 0 || id == null)
+            if ( id == 0 || id == null)
             {
                 return View();
             }
@@ -37,11 +45,11 @@ namespace DersTakip.Controllers
         }
 
         [HttpPost]
-        public IActionResult OgrenciEKleGuncelle(Ogrenciler ogrenciler, IFormFile? file)
+        public IActionResult OgrenciEKleGuncelle(Ogrenciler ogrenciler)    //  IFormFile? file
         {
             if(ModelState.IsValid)
             {
-                _ogrencilerRepository.Ekle(ogrenciler);
+                _ogrencilerRepository.Guncelle(ogrenciler);
                 _ogrencilerRepository.Kaydet();
                 TempData["basarili"] = "Yeni öğrenci kaydedildi.";
                 return RedirectToAction("Index");
@@ -65,7 +73,7 @@ namespace DersTakip.Controllers
             return View(ogrencilerVt);
         }
 
-        */
+       
 
         [HttpPost]
         public IActionResult Guncelle(Ogrenciler ogrenciler)
@@ -80,7 +88,7 @@ namespace DersTakip.Controllers
             return View();
         }
 
-
+         */
 
         public IActionResult Sil(int? id)  // TC yi yemedi ~OgretmenlerController->id 
         {

@@ -15,7 +15,7 @@ namespace DersTakip.Models
         public string Soyad { get; set; }
         [Required]
         public string Brans {  get; set; }
-
+        
         public string ResimUrl { get; set; }
 
     }

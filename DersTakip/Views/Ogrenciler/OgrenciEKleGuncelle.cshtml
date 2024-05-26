@@ -37,10 +37,10 @@
             <span asp-validation-for="Sinifi" class="text-danger"></span>
         </div>
 
-        <div class="mb-3">
+       @*  <div class="mb-3">
             <label asp-for="ResimUrl" class="p-0"></label>
             <input type="file" name="file" class="form-control" />
-        </div>
+        </div> *@
 
         @if (Model != null)      // çalışıyordu ama değiştirdik => @if(Model.Id != 0)
         {
