@@ -28,8 +28,8 @@
             {
                 <tr>
                    @*  <td>@Ogretmenler.Id</td> *@
-                   <td> <img src="@ogretmenler.Resim"/></td>
-                    <td>@ogretmenler.Ad @ogretmenler.Soyad</td>
+                   <td> <img src="@ogretmenler.Resim" width="200px" height="200px"/></td>
+                    <td class="container d-flex align-items-center justify-content-center">@ogretmenler.Ad @ogretmenler.Soyad</td>
                     <td>@ogretmenler.Brans</td>
                     <td><a asp-controller="Ogretmenler" asp-action="Guncelle" asp-route-id="@ogretmenler.Id" class=" btn btn-success btn-sm" type="button">Güncelle</a></td>
                     <td><a asp-controller="Ogretmenler" asp-action="Sil" asp-route-id="@ogretmenler.Id" class=" btn btn-danger btn-sm" type="button">Sil</a></td>
@@ -49,47 +49,6 @@
 
    
 </div>
-
-
-
-
-
-@* @model List<Ogretmenler>
-
-<div class="container">
-    <div class="row pt-3 pb-4">
-        <div><h3>Öğretmenler Sayafı</h3></div>
-    </div>
-
-    <table class="table tablo-bordered">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Öğretmen Listesi</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach(var Ogretmenler in Model)
-            {
-                <tr>
-                    <td>@Ogretmenler.Ad</td>
-                    <td>@Ogretmenler.Soyad</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-    <div class="row pt-3 pb-2">
-        <div>
-            <a asp-controller="Ogretmenler" asp-action="OgretmenEkle" class="btn btn-outline-secondary" type="button">
-                Yeni Öğretmen Ekle
-            </a>
-        </div>
-    </div>
-
-
-</div> *@
 
 
 

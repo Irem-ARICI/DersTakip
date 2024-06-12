@@ -46,7 +46,7 @@ namespace DersTakip.Controllers
         }
 
         [HttpPost]
-        public IActionResult OgretmenEkle(Ogretmenler ogretmenler)     // ,
+        public IActionResult OgretmenEkle(Ogretmenler ogretmenler, IFormFile? file)     // ,
                                                                        // 
         {
             if (ModelState.IsValid)
@@ -76,9 +76,24 @@ namespace DersTakip.Controllers
         [HttpPost]
         public IActionResult Guncelle(Ogretmenler ogretmenler, IFormFile? file)
         {
+            var errors = ModelState.Values.SelectMany(x => x.Errors);
+
             if (ModelState.IsValid)
             {
-                _ogretmenlerRepository.Guncelle(ogretmenler);
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                string ogretmenPath = Path.Combine(wwwRootPath, @"img");
+
+                if(file != null)
+                {
+                    using (var fileStream = new FileStream(Path.Combine(ogretmenPath, file.FileName), FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                    }
+                    ogretmenler.Resim = @"\img\" + file.FileName;
+                }
+                
+
+                    _ogretmenlerRepository.Guncelle(ogretmenler);
                 _ogretmenlerRepository.Kaydet();   // YApmazsan veritabanına eklenmez. => SaveChanges(); ===> repository ekledik sonraağa
                 TempData["basarili"] = "Öğretmen bilgileri güncellendi.";
                 return RedirectToAction("Index");    // "Ogretmenler" controllerını çağırıyoruz farklı bi cont. çağırcaksak kesin yazmak zorunda
