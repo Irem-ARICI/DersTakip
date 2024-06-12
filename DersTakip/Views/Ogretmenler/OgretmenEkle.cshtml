@@ -1,6 +1,6 @@
 ﻿@model Ogretmenler
 
-<form method="post" enctype="multipart/form-data">
+<form method="post">
     @* enctype="multipart/form-data" *@
     <div class="border p-3 mt-5">
         <h2 class="text-primary">Öğretmen Ekleme </h2>
@@ -24,14 +24,26 @@
         <input asp-for="Brans" class="form-control" />
         <span asp-validation-for="Brans" class="text-danger"></span>
     </div>
-
-    <div class="mb-3">
-        <label asp-for="ResimUrl" class="p-0"></label>
-        <input type="file" name="file" class="form-control" />
+        <input type="file" id="myFile" size="50">
+        <button type="button" onclick="myFunction()" class="btn-success btn border-2">Resmi Kaydet</button>
     </div>
+   <input id="demo" asp-for="Resim" style="
+display:block" ></input>
 
-    </div>
-
+@*     <script>
+        document.getElementById('myFile').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const fileInfo = `
+                  File Name: ${file.name} <br>
+                  File Size: ${file.size} bytes <br>
+                  File Type: ${file.type} <br>
+                  Last Modified: ${file.lastModifiedDate}
+                `;
+                document.getElementById("demo").value = event.target.files[0].mozFullPath;
+            }
+        });
+    </script> *@
 
     <button type="submit" class="btn btn-outline-secondary" style="width:250px">Öğretmeni Ekle</button>
 
@@ -39,7 +51,7 @@
        Öğretmenlere Geri Dön
     </a>
 
-    </div>
+    @* </div> *@
 </form>
 
 

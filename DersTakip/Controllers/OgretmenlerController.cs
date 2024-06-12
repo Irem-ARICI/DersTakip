@@ -10,10 +10,18 @@ namespace DersTakip.Controllers
         // Dependency injection
 
         private readonly IOgretmenlerRepository _ogretmenlerRepository;
-        public OgretmenlerController(IOgretmenlerRepository context)
+        public readonly IWebHostEnvironment _webHostEnvironment;
+
+        public OgretmenlerController(IOgretmenlerRepository ogretmenlerRepository, IWebHostEnvironment webHostEnvironment)// : this(ogretmenlerRepository)
         {
-            _ogretmenlerRepository = context;
+            _ogretmenlerRepository = ogretmenlerRepository;
+            _webHostEnvironment = webHostEnvironment;
         }
+        
+        //public OgretmenlerController(IOgretmenlerRepository context)
+        //{
+        //    _ogretmenlerRepository = context;
+        //}
         public IActionResult Index()
         {
             String ornek = "merhaba";
@@ -38,15 +46,16 @@ namespace DersTakip.Controllers
         }
 
         [HttpPost]
-        public IActionResult OgretmenEkle(Ogretmenler ogretmenler, IFormFile? file)     // , IFormFile? file
+        public IActionResult OgretmenEkle(Ogretmenler ogretmenler)     // ,
+                                                                       // 
         {
-            //if (ModelState.IsValid)
-         //   {
+            if (ModelState.IsValid)
+            {
                 _ogretmenlerRepository.Ekle(ogretmenler);
                 _ogretmenlerRepository.Kaydet();   // YApmazsan veritabanına eklenmez. => SaveChanges();
                 TempData["basarili"] = "Yeni öğretmen kaydedildi."; // TempData Controller ve View arasında geçişi göntülememizi sağlıyor
                 return RedirectToAction("Index");    // "Ogretmenler" controllerını çağırıyoruz farklı bi cont. çağırcaksak kesin yazmak zorunda
-         //   }
+            }
             return View();
         }
 

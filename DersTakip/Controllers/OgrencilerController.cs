@@ -1,10 +1,12 @@
 ﻿using DersTakip.Models;
 using DersTakip.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DersTakip.Controllers
 {
+    [Authorize(Roles=UserRoles.Role_Admin)]
     public class OgrencilerController : Controller
     {
         private readonly IOgrencilerRepository _ogrencilerRepository;

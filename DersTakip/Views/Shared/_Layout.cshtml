@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using DersTakip.Utility
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -26,6 +27,9 @@
                             <a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                        
+                        @if (User.IsInRole(UserRoles.Role_Admin))
+                        {  
+                        
                         <li class="nav-item">
                             <a class="nav-link text" asp-area="" asp-controller="Ogretmenler" asp-action="Index">Öğretmenler</a>
                         </li>
@@ -41,9 +45,34 @@
                         <li class="nav-item">
                             <a class="nav-link text" asp-area="" asp-controller="ProgramHftlk" asp-action="Index">Haftalık Program</a>
                         </li>
-                    
+                        }
+
+                        @if (User.IsInRole(UserRoles.Role_Ogrenci))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text" asp-area="" asp-controller="Ogretmenler" asp-action="Index">Öğretmenler</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text" asp-area="" asp-controller="ProgramHftlk" asp-action="Index">Haftalık Program</a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole(UserRoles.Role_Ogretmen))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text" asp-area="" asp-controller="Istekler" asp-action="Index">İstekler</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text" asp-area="" asp-controller="ProgramHftlk" asp-action="Index">Haftalık Program</a>
+                            </li>
+                        }
 
                     </ul>
+
+                    <partial name="_LoginPartial" />
+
                 </div>
             </div>
         </nav>
