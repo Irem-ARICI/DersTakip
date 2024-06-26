@@ -9,15 +9,15 @@ namespace DersTakip.Controllers
         private readonly IIsteklerRepository _isteklerRepository;
         private readonly IOgretmenlerRepository _ogretmenlerRepository;
         private readonly IOgrencilerRepository? _ogrencilerRepository;
-        public readonly IWebHostEnvironment _webHostEnvironment;
-        private IOgrencilerRepository? ogrencilerRepository;
+        //public readonly IWebHostEnvironment _webHostEnvironment;
+        //private IOgrencilerRepository? ogrencilerRepository;
 
-        public IsteklerController(IIsteklerRepository isteklerRepository, IOgretmenlerRepository ogretmenlerRepository, IWebHostEnvironment webHostEnvironment)
+        public IsteklerController(IIsteklerRepository isteklerRepository, IOgretmenlerRepository ogretmenlerRepository, IOgrencilerRepository ogrencilerRepository/*, IWebHostEnvironment webHostEnvironment*/)
         {
             _isteklerRepository = isteklerRepository;
             _ogretmenlerRepository = ogretmenlerRepository;
             _ogrencilerRepository = ogrencilerRepository;
-            _webHostEnvironment = webHostEnvironment;
+            //_webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
@@ -35,7 +35,7 @@ namespace DersTakip.Controllers
                     Text = k.AdSoyad,
                     Value = k.Id.ToString()
                 });
-            ViewBag.KitapList = OgrencilerList;
+            ViewBag.OgrencilerList = OgrencilerList;
 
             if (id == null || id == 0)
             {
@@ -86,13 +86,13 @@ namespace DersTakip.Controllers
         // GET ACTION
         public IActionResult Sil(int? id)
         {
-            //IEnumerable<SelectListItem> OgrencilerList = _ogrencilerRepository.GetAll()
-            //    .Select(k => new SelectListItem
-            //    {
-            //        Text = k.AdSoyad,
-            //        Value = k.Id.ToString()
-            //    });
-            //ViewBag.OgrencilerList = OgrencilerList;
+            IEnumerable<SelectListItem> OgrencilerList = _ogrencilerRepository.GetAll()
+                .Select(k => new SelectListItem
+                {
+                    Text = k.AdSoyad,
+                    Value = k.Id.ToString()
+                });
+            ViewBag.OgrencilerList = OgrencilerList;
 
             if (id == null || id == 0)
             {
@@ -107,7 +107,7 @@ namespace DersTakip.Controllers
         }
 
 
-        [HttpPost, /*ActionName("Sil")*/]
+        [HttpPost, ActionName("Sil")]
         public IActionResult SilPOST(int? id)
         {
             Istekler? istekler = _isteklerRepository.Get(u => u.Id == id);

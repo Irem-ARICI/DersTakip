@@ -1,12 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DersTakip.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DersTakip.Controllers
 {
     public class ProgramHftlkController : Controller
     {
-        public IActionResult Index()
+        private readonly IProgramHftlkRepository programHftlkRepository;
+
+		public ProgramHftlkController(IProgramHftlkRepository programHftlkRepository)
+		{
+			this.programHftlkRepository = programHftlkRepository;
+		}
+
+		public IActionResult Index()
         {
-            return View();
+            List<ProgramHftlk> objProgramHftlkList = programHftlkRepository.GetAll().ToList();
+            return View(objProgramHftlkList);
+
         }
+
+
+
     }
 }

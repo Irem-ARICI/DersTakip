@@ -13,6 +13,7 @@ namespace DersTakip.Utility
         public DbSet<Ogretmenler> OgretmenlerTbl { get; set; }
         public DbSet<Ogrenciler> OgrencilerTbl { get; set; }
         public DbSet<Istekler> IsteklerTbl { get;set; }
+        public DbSet<ProgramHftlk> ProgramHftkTbl { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }

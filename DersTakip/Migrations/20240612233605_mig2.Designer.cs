@@ -4,6 +4,7 @@ using DersTakip.Utility;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DersTakip.Migrations
 {
     [DbContext(typeof(UygulamaDbContext))]
-    partial class UygulamaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240612233605_mig2")]
+    partial class mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,18 +131,10 @@ namespace DersTakip.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("OgretmenlerId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Tarih")
-                        .HasColumnType("datetime2");
-
                     b.Property<bool>("İste")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("OgretmenlerId");
 
                     b.ToTable("ProgramHftkTbl");
                 });
@@ -365,17 +360,6 @@ namespace DersTakip.Migrations
                 });
 
             modelBuilder.Entity("DersTakip.Models.Istekler", b =>
-                {
-                    b.HasOne("DersTakip.Models.Ogretmenler", "Ogretmenler")
-                        .WithMany()
-                        .HasForeignKey("OgretmenlerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Ogretmenler");
-                });
-
-            modelBuilder.Entity("DersTakip.Models.ProgramHftlk", b =>
                 {
                     b.HasOne("DersTakip.Models.Ogretmenler", "Ogretmenler")
                         .WithMany()

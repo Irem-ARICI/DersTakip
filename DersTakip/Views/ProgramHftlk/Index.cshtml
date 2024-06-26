@@ -1,4 +1,50 @@
-﻿<!DOCTYPE html>
+﻿@model List<ProgramHftlk>
+
+
+<div class="container">
+    <div class="row pt-3 pb-4">
+        <div><h3 style="color: #007bff;">Öğretmenler Sayfası</h3></div>
+    </div>
+
+    <table class="table table-bordered" style="background-color: rgba(255, 255, 255, 0.8);">
+        <thead>
+            <tr>
+                @*  <th style="color: #007bff;">Id</th> *@
+               
+                <th style="color: #007bff;">Öğretmen  Ad & Soyad</th>
+                <th style="color: #007bff;">Program Onay</th>
+                <th style="color: #007bff;">Tarih </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var programlar in Model)
+            {
+                <tr>
+                    <td> @(programlar.Ogretmenler != null ? $"{programlar.Ogretmenler.Ad} {programlar.Ogretmenler.Soyad}" : "No Teacher")</td>
+                    <td>@programlar.İste</td>
+                    <td>@programlar.Tarih</td>
+                    @* <td><a asp-controller="Ogretmenler" asp-action="Guncelle" asp-route-id="@programlar.Id" class=" btn btn-success btn-sm" type="button">Güncelle</a></td>
+                    <td><a asp-controller="Ogretmenler" asp-action="Sil" asp-route-id="@programlar.Id" class=" btn btn-danger btn-sm" type="button">Sil</a></td> *@
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+   
+
+
+</div>
+
+
+
+
+
+
+
+@* <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -61,16 +107,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th class="time-column">7:00 - 8:00</th>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                    </tr>
 
                     <tr>
                         <th class="time-column">8:00 - 9:00</th>
@@ -118,14 +154,10 @@
 
                     <tr>
                         <th class="time-column">12:00 - 13:00</th>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
+                        <td class="button-cell" colspan="7"><button class="btn btn-secondary">Öğle Arası</button></td>
                     </tr>
+
+
 
                     <tr>
                         <th class="time-column">13:00 - 14:00</th>
@@ -204,16 +236,6 @@
                         <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
                     </tr>
 
-                    <tr>
-                        <th class="time-column">22:00 - 23:00</th>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                        <td class="button-cell"><button class="btn btn-primary">Talep oluştur</button></td>
-                    </tr>
 
                     <!-- Diğer zaman aralıkları için gerekli satırları ekleyin -->
                 </tbody>
@@ -222,3 +244,6 @@
     </div>
 </body>
 </html>
+
+
+ *@

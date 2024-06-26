@@ -24,9 +24,25 @@ namespace DersTakip.Controllers
         //}
         public IActionResult Index()
         {
-            String ornek = "merhaba";
-            ViewBag.ornek = ornek;
+            if (User.IsInRole(UserRoles.Role_Ogrenci))
+            {
+                // Redirect to Index2 action in Ogretmenler controller
+                return RedirectToAction("Index2", "Ogretmenler");
+            }
+            else
+            {
+                String ornek = "merhaba";
+                ViewBag.ornek = ornek;
 
+                List<Ogretmenler> objOgretmenlerList = _ogretmenlerRepository.GetAll().ToList();
+                return View(objOgretmenlerList);
+
+            }
+
+        }
+
+        public IActionResult Index2()
+        {
             List<Ogretmenler> objOgretmenlerList = _ogretmenlerRepository.GetAll().ToList();
             return View(objOgretmenlerList);
         }

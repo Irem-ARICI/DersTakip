@@ -27,7 +27,6 @@
             @foreach (var ogretmenler in Model)
             {
                 <tr>
-                   @*  <td>@Ogretmenler.Id</td> *@
                    <td> <img src="@ogretmenler.Resim" width="200px" height="200px"/></td>
                     <td class="container d-flex align-items-center justify-content-center">@ogretmenler.Ad @ogretmenler.Soyad</td>
                     <td>@ogretmenler.Brans</td>
@@ -49,8 +48,3 @@
 
    
 </div>
-
-
-
-@* <div class="row pt-3 pb-2"></div>
-<h1>@ViewBag.ornek</h1>     @* // ViewBag ile merhabaağa *@ 

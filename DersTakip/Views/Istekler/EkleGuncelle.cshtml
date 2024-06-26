@@ -1,0 +1,67 @@
+﻿@model Istekler
+
+<form method="post" enctype="multipart/form-data">
+
+    <div class="border p-3 mt-5">
+        <h2 class="text-primary"> @(Model == null ? "İstek Ekle" : "İstek Güncelle")</h2>
+
+
+
+        <div class="mb-3">
+            <label asp-for="AdSoyad" class="p-0">TC Ekle:</label>
+            <input asp-for="AdSoyad" class="form-control" />
+            <span asp-validation-for="AdSoyad" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Sinif" class="p-0">Ad-Soyad Ekle:</label>
+            <input asp-for="Sinif" class="form-control" />
+            <span asp-validation-for="Sinif" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Brans" class="p-0">Telefon Numarası Ekle:</label>
+            <input asp-for="Brans" class="form-control" />
+            <span asp-validation-for="Brans" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Sonuc" class="p-0">Mail Ekle:</label>
+            <input asp-for="Sonuc" class="form-control" />
+            <span asp-validation-for="Sonuc" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="OgrenciId" class="p-0"></label>
+            <select asp-for="OgrenciId" asp-items="ViewBag.OgrencilerList " class="form-select">
+            </select>
+        </div>
+
+        @* <div class="mb-3">
+            <label asp-for="Sinifi" class="p-0">Sınıf Ekle:</label>
+            <input asp-for="Sinifi" class="form-control" />
+            <span asp-validation-for="Sinifi" class="text-danger"></span>
+        </div> *@
+
+        @*  <div class="mb-3">
+        <label asp-for="ResimUrl" class="p-0"></label>
+        <input type="file" name="file" class="form-control" />
+        </div> *@
+
+        @if (Model != null)      // çalışıyordu ama değiştirdik => @if(Model.Id != 0)
+        {
+            <button type="submit" class="btn btn-outline-secondary" style="width:250px">Güncelle</button>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-outline-secondary" style="width:250px">Öğrenci Ekle</button>
+        }
+        <a asp-controller="Ogrenciler" asp-action="Index" class="btn btn-outline-secondary" type="button" style="width:250px">
+            Öğrencilere Geri Dön
+        </a>
+
+    </div>
+</form>
+
+
+

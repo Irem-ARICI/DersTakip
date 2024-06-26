@@ -24,7 +24,7 @@
                             <a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text" asp-area="" asp-controller="Home" asp-action="Privacy">Açıklama</a>
                         </li>
                        
                         @if (User.IsInRole(UserRoles.Role_Admin))
@@ -34,9 +34,9 @@
                             <a class="nav-link text" asp-area="" asp-controller="Ogretmenler" asp-action="Index">Öğretmenler</a>
                         </li>
 
-                        <li class="nav-item">
+                        @* <li class="nav-item">
                             <a class="nav-link text" asp-area="" asp-controller="Istekler" asp-action="Index">İstekler</a>
-                        </li>
+                        </li> *@
 
                         <li class="nav-item">
                             <a class="nav-link text" asp-area="" asp-controller="Ogrenciler" asp-action="Index">Öğrenciler</a>
@@ -60,9 +60,9 @@
 
                         @if (User.IsInRole(UserRoles.Role_Ogretmen))
                         {
-                            <li class="nav-item">
+                            @* <li class="nav-item">
                                 <a class="nav-link text" asp-area="" asp-controller="Istekler" asp-action="Index">İstekler</a>
-                            </li>
+                            </li> *@
 
                             <li class="nav-item">
                                 <a class="nav-link text" asp-area="" asp-controller="ProgramHftlk" asp-action="Index">Haftalık Program</a>

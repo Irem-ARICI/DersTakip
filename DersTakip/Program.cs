@@ -27,7 +27,8 @@ namespace DersTakip
             // _ogretmenlerRepository nesnesini olu?turmam?z? sa?l?yor => dependency Injection
             builder.Services.AddScoped<IOgretmenlerRepository, OgretmenlerRepository>();
             builder.Services.AddScoped<IOgrencilerRepository, OgrencilerRepository>();
-
+            builder.Services.AddScoped<IIsteklerRepository, IsteklerRepository>(); 
+            builder.Services.AddScoped<IProgramHftlkRepository, ProgramHftlkRepository>();
             builder.Services.AddScoped<IEmailSender,EmailSender>();
 
             var app = builder.Build();

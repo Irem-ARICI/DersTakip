@@ -1,19 +1,27 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "İzmir Dershane - Ana Sayfa";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 style="color:white" class="display-4">İzmir Dershanesine'ye Hoşgeldiniz</h1>
+    <p>Dershanemiz hakkında daha fazla bilgi almak için <a href="https://izmir-dershane.com">web sitemizi ziyaret edin</a>.</p>
 </div>
 
 <style>
     /* Arka plan resmi için stil */
     body {
-        background-image: url('clouds.jpg');
+        background-image: url('https://images.unsplash.com/photo-1494256997604-768d1f608cac'); /* Arka plan resmi URL'sini değiştirin */
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+    }
+
+    /* Ana içerik alanı */
+    .main-content {
+        background-color: rgba(255, 255, 255, 0.8); /* Şeffaf beyaz arka plan */
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
     }
 
     /* İletişim bilgileri stilini güncelle */
@@ -38,18 +46,119 @@
             background-color: black;
             padding: 20px; /* Sağ ve sol kolonların iç boşluğu */
         }
+
+    /* Galeri stil ayarları */
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+        .gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
 </style>
+
+<!-- Ana İçerik -->
+<div class="main-content">
+    <section>
+        <h2>Hakkımızda</h2>
+        <p>
+            İzmir Dershane olarak, öğrencilere sadece bilgi vermekle kalmıyor, aynı zamanda onların entelektüel meraklarını da artırmayı hedefliyoruz. İzmir’in kalbinde yer alan kurumumuz, her öğrencinin bireysel ihtiyaçlarına cevap verebilecek kapsamlı bir eğitim sistemi sunar. Vizyonumuz, öğrencilerimizin potansiyelini en üst düzeye çıkarmak ve onları akademik, sosyal ve kişisel anlamda başarılı bireyler olarak geleceğe hazırlamaktır.
+        </p>
+        <p>
+            Bizim eğitim yaklaşımımız, sadece sınav odaklı değil, aynı zamanda yaşam boyu öğrenmeyi teşvik eden bir yapıya sahiptir. İzmir Dershane, öğrencilere geniş bir yelpazede bilgi ve beceriler kazandırarak onların her alanda kendilerini geliştirmelerine olanak tanır.
+        </p>
+    </section>
+
+    <section>
+        <h2>Eğitim Yaklaşımımız</h2>
+        <p>
+            Eğitimde modern ve yenilikçi yöntemler kullanarak, öğrencilerimizin en güncel bilgi ve becerilere erişmelerini sağlıyoruz:
+        </p>
+        <ul>
+            <li><strong>Modern Eğitim Yöntemleri:</strong> Teknolojiyle entegre edilmiş eğitim materyalleri ve interaktif öğrenme teknikleri kullanarak, öğrencilerimize en güncel ve etkili öğrenme deneyimini sunuyoruz.</li>
+            <li><strong>Kişiselleştirilmiş Öğrenme:</strong> Her öğrencinin öğrenme hızı ve tarzı farklıdır. Bu nedenle, öğretim programlarımızı öğrencilerin bireysel ihtiyaçlarına göre uyarlıyoruz. Öğrencilerimize özgüvenlerini artıracak, problem çözme yeteneklerini geliştirecek ve bağımsız düşünmelerini sağlayacak bir öğrenme ortamı sunuyoruz.</li>
+            <li><strong>Alanında Uzman Kadro:</strong> Eğitim kadromuz, alanında uzman, deneyimli ve tutkulu öğretmenlerden oluşmaktadır. Öğretmenlerimiz, öğrencilerimize ilham vermek ve onların akademik hedeflerine ulaşmalarına yardımcı olmak için sürekli olarak kendilerini geliştirirler.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Fiziksel Ortamımız</h2>
+        <p>
+            İzmir Dershane, öğrencilerin rahat ve güvenli bir öğrenme ortamında eğitim almasını sağlar. Sınıflarımız, modern ve ergonomik mobilyalarla donatılmış olup, öğrencilerin derse odaklanmalarını kolaylaştırır:
+        </p>
+        <ul>
+            <li><strong>Geniş ve Aydınlık Sınıflar:</strong> Ferah ve geniş sınıflarımız, öğrencilerimizin ders sırasında rahat bir şekilde oturmalarını ve öğrenme süreçlerine odaklanmalarını sağlar. Her sınıf, doğal ışık alacak şekilde tasarlanmış ve modern eğitim araçlarıyla donatılmıştır.</li>
+            <li><strong>Teknolojik Altyapı:</strong> Dershane genelinde güçlü bir teknoloji altyapısı sunuyoruz. Akıllı tahtalar, projeksiyon cihazları ve bilgisayarlar gibi teknolojik araçlar, derslerin daha etkileşimli ve ilgi çekici hale gelmesini sağlar.</li>
+            <li><strong>Dinlenme Alanları:</strong> Öğrencilerimiz, ders aralarında dinlenebilecekleri rahat ve güvenli alanlara sahiptir. Bu alanlar, onların sosyal becerilerini geliştirmeleri ve arkadaşlarıyla keyifli vakit geçirmeleri için idealdir.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Öğrenci Destek Hizmetleri</h2>
+        <p>
+            Öğrencilerimizin sadece akademik başarılarını değil, aynı zamanda kişisel gelişimlerini de önemsiyoruz. Bu nedenle, çeşitli destek hizmetleri sunarak onların her alanda gelişimlerini destekliyoruz:
+        </p>
+        <ul>
+            <li><strong>Rehberlik ve Danışmanlık:</strong> Rehber öğretmenlerimiz, öğrencilerin kariyer hedeflerini belirlemelerine yardımcı olur ve onlara yol gösterir. Bireysel danışmanlık hizmetlerimiz, öğrencilerin kişisel ve akademik sorunlarını çözmelerine destek olur.</li>
+            <li><strong>Ekstrakuriküler Aktiviteler:</strong> Öğrencilerimize çeşitli spor, sanat ve kültürel aktiviteler sunarak onların yeteneklerini ve ilgi alanlarını keşfetmelerini teşvik ediyoruz. Bu aktiviteler, öğrencilerin sosyal becerilerini geliştirmelerine ve öz güvenlerini artırmalarına yardımcı olur.</li>
+            <li><strong>Sınav Hazırlık Programları:</strong> Öğrencilerimizi, üniversite giriş sınavları gibi önemli sınavlara en iyi şekilde hazırlamak için kapsamlı sınav hazırlık programları sunuyoruz. Bu programlar, deneme sınavları, birebir dersler ve stratejik rehberlik içerir.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Topluluk ve İletişim</h2>
+        <p>
+            İzmir Dershane, sadece bir eğitim kurumu değil, aynı zamanda güçlü bir topluluk oluşturmayı amaçlar. Öğrencilerimiz, öğretmenlerimiz ve velilerimiz arasında sürekli iletişim ve işbirliği sağlamak için çeşitli yollar sunuyoruz:
+        </p>
+        <ul>
+            <li><strong>Velilerle İletişim:</strong> Velilerle düzenli olarak iletişim kurarak, çocuklarının akademik gelişimleri hakkında onları bilgilendiriyoruz. Velilerimizin görüş ve önerilerine değer veriyor ve onların katılımını teşvik ediyoruz.</li>
+            <li><strong>Öğrenci Katılımı:</strong> Öğrencilerimiz, dershane etkinliklerine ve karar alma süreçlerine aktif olarak katılabilirler. Bu katılım, onların liderlik becerilerini geliştirmelerine ve topluluk bilinci kazanmalarına yardımcı olur.</li>
+            <li><strong>Sosyal Sorumluluk Projeleri:</strong> Topluma katkıda bulunmayı önemseyen bir kurum olarak, öğrencilerimizi sosyal sorumluluk projelerine katılmaya teşvik ediyoruz. Bu projeler, öğrencilerimizin empati yeteneklerini geliştirmelerine ve toplumsal farkındalık kazanmalarına olanak tanır.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Gelecek Vizyonumuz</h2>
+        <p>
+            İzmir Dershane, geleceğe yönelik vizyonuyla daima yenilikçi ve öncü olmayı hedefler. Öğrencilerimizin hem akademik hem de kişisel gelişimlerinde önemli bir rol oynamayı sürdüreceğiz:
+        </p>
+        <ul>
+            <li><strong>Sürekli Gelişim:</strong> Eğitim programlarımızı ve yöntemlerimizi sürekli olarak güncelliyor ve iyileştiriyoruz. Amacımız, her zaman en güncel ve etkili eğitim yaklaşımlarını uygulamaktır.</li>
+            <li><strong>Genişleyen Fırsatlar:</strong> Öğrencilerimize, dünya standartlarında bir eğitim sunarak onların global düzeyde rekabet edebilmelerini sağlıyoruz. Bu hedef doğrultusunda, uluslararası eğitim işbirlikleri ve değişim programları gibi fırsatları artırmayı planlıyoruz.</li>
+            <li><strong>Topluma Katkı:</strong> Geleceğin liderlerini yetiştirme misyonumuzu yerine getirirken, topluma da katkıda bulunmayı sürdüreceğiz. Sosyal sorumluluk projeleri ve topluma hizmet programları aracılığıyla, öğrencilerimizin topluma olumlu bir şekilde etki etmelerini sağlamayı amaçlıyoruz.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Galeri</h2>
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=700&q=60" alt="Sınıf Görüntüsü 1">
+            <img src="https://cdnuploads.aa.com.tr/uploads/Contents/2014/04/20/thumbs_b_c_4d6a2ad60cce0f9874949818bbc0972e.jpg" alt="Sınıf Görüntüsü 2">
+            <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&w=700&q=60" alt="Öğretmen Görüntüsü">
+            <img src="https://eryamanortadogulular.com/wp-content/uploads/2023/05/etimesgut-dershane-fiyatlari.jpg" alt="Etkinlik Görüntüsü">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGhneHzmY7L-L1GkjdCVGD2cJ0ZlY2rtGmgg&s" alt="resim5" />
+        </div>
+    </section>
+</div>
 
 <!-- İletişim Bilgileri -->
 <div class="row pt-3 iletisim-bilgileri">
     <div class="col-md-6">
         <h4>İletişim Bilgileri</h4>
-        <p>Telefon: 123-456-7890</p>
-        <p>Hafta içi : 7.00 - 22.00</p>
-        <p>Hafta sonu : 7.00 - 23.00</p>
-        <p>Adres: Örnek Mahallesi, Örnek Sokak No: 123, Örnek İl/İlçe</p>
+        <p>Telefon: 0232-456-7890</p>
+        <p>Hafta içi : 8.00 - 20.00</p>
+        <p>Hafta sonu : 9.00 - 18.00</p>
+        <p>Adres: Mustafa Kemal Mahallesi, Atatürk Caddesi No: 10, İzmir</p>
     </div>
     <div class="col-md-6">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d482319.1448428725!2d28.84812812636862!3d41.00823722127213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40bacc3d6347b805%3A0x1e7fb7b09fd05eb2!2sIstanbul!5e0!3m2!1sen!2str!4v1646202174182!5m2!1sen!2str" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.840073785441!2d27.13859581531717!3d38.423734879643754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b95e59868fbd43%3A0xb3c3e289eb0b02b1!2sİzmir!5e0!3m2!1str!2str!4v1646202174182!5m2!1str!2str" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 </div>
